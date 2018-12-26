@@ -15,13 +15,13 @@ const fs = {
 describe("wc", function() {
   it("should return lineCount,wordCount and character count of a file", function() {
     const actualOutput = wc(["numbers"], fs);
-    const expectedOutput = "      10      10      20 numbers";
+    const expectedOutput = "       9      10      20 numbers";
     assert.equal(actualOutput, expectedOutput);
   });
 
   it("should return counts for file which contain multiple space ", function() {
     const actualOutput = wc(["letters"], fs);
-    const expectedOutput = "       1       3       6 letters";
+    const expectedOutput = "       0       3       6 letters";
     assert.deepEqual(actualOutput, expectedOutput);
   });
 });
