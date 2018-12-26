@@ -1,7 +1,7 @@
-const { justifyLength, isSingleFile } = require("./util.js");
+const { justifyCount, isSingleFile } = require("./util.js");
 
 const formatCount = function(counts) {
-  return counts.map(count => justifyLength(count, 8)).join("");
+  return counts.map(count => justifyCount(count, 8)).join("");
 };
 
 const formatText = function(fileNames, counts) {

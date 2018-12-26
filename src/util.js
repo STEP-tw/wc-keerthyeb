@@ -2,7 +2,7 @@ const SPACE = " ";
 const EMPTY = "";
 const NEW_LINE = "\n";
 
-const justifyLength = function(text, width) {
+const justifyCount = function(text, width) {
   let spaceWidth = width - text.toString().length;
   return repeatSymbol(spaceWidth, SPACE) + text;
 };
@@ -19,13 +19,9 @@ const getCount = function(fileContent) {
   return [lineCount, wordCount, charCount];
 };
 
-const countLine = function(fileContent) {
-  return fileContent.split(NEW_LINE).length - 1;
-};
+const countLine = fileContent => fileContent.split(NEW_LINE).length - 1;
 
-const countChar = function(fileContent) {
-  return fileContent.split(EMPTY).length;
-};
+const countChar = fileContent => fileContent.split(EMPTY).length;
 
 const countWord = function(fileContent) {
   return fileContent
@@ -34,12 +30,10 @@ const countWord = function(fileContent) {
     .filter(word => word !== EMPTY).length;
 };
 
-const isSingleFile = function(file) {
-  return file.length == 1;
-};
+const isSingleFile = file => file.length == 1;
 
 module.exports = {
   getCount,
-  justifyLength,
+  justifyCount,
   isSingleFile
 };
