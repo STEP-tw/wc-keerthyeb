@@ -8,4 +8,15 @@ const repeatSymbol = function(times, symbol) {
   return new Array(times).fill(symbol).join("");
 };
 
-module.exports = { justifyLength };
+const count = function(fileContent, delimiter) {
+  return fileContent.split(delimiter).length;
+};
+
+const countWord = function(fileContent) {
+  return fileContent
+    .replace(/\n/g, " ")
+    .split(" ")
+    .filter(word => word !== "").length;
+};
+
+module.exports = { count, countWord, justifyLength };
