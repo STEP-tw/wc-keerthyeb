@@ -9,15 +9,15 @@ const wc = function(args, fs) {
   return handleOutput(fileNames, options, counts);
 };
 
-const handleOutput = function(fileNames, userOptions, counts) {
-  if (userOptions.length == 0) {
+const handleOutput = function(fileNames, options, counts) {
+  if (options.length == 0) {
     return formatText(fileNames, counts);
   }
-  const options = { l: 0, w: 1, c: 2 };
-  let a = counts.map(count =>
-    userOptions.map(option => count[options[option]])
+  const optionIndex = { l: 0, w: 1, c: 2 };
+  let userCounts = counts.map(count =>
+    options.map(option => count[optionIndex[option]])
   );
-  return formatText(fileNames, a);
+  return formatText(fileNames, userCounts);
 };
 
 const getFileDetails = function(fileName, fs) {
