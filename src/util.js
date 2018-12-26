@@ -16,7 +16,7 @@ const getCount = function(fileContent) {
   const lineCount = countLine(fileContent);
   const wordCount = countWord(fileContent);
   const charCount = countChar(fileContent);
-  return { lineCount, wordCount, charCount };
+  return [lineCount, wordCount, charCount];
 };
 
 const countLine = function(fileContent) {
@@ -34,4 +34,12 @@ const countWord = function(fileContent) {
     .filter(word => word !== EMPTY).length;
 };
 
-module.exports = { countLine, countChar, getCount, countWord, justifyLength };
+const isSingleFile = function(file) {
+  return file.length == 1;
+};
+
+module.exports = {
+  getCount,
+  justifyLength,
+  isSingleFile
+};

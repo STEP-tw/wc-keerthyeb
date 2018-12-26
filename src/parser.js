@@ -2,9 +2,9 @@ const HYPHEN = "-";
 
 const hasOption = arg => arg.startsWith(HYPHEN);
 
-const createParsedObject = (fileName, userOptions) => {
+const createParsedObject = (fileNames, userOptions) => {
   let options = orderOption(userOptions);
-  return { fileName, options };
+  return { fileNames, options };
 };
 
 const parse = args => {
