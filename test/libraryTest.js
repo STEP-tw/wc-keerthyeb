@@ -54,4 +54,34 @@ describe("wc", function() {
     const expectedOutput = "       0       3       6 letters";
     assert.deepEqual(actualOutput, expectedOutput);
   });
+
+  it("should return counts for multiple files", function() {
+    const actualOutput = wc(["letters", "letters"], fs);
+    const expectedOutput =
+      "       0       3       6 letters\n" +
+      "       0       3       6 letters\n" +
+      "       0       6      12 total";
+    assert.deepEqual(actualOutput, expectedOutput);
+  });
+
+  it("should return line counts for multiple files", function() {
+    const actualOutput = wc(["-l", "letters", "letters"], fs);
+    const expectedOutput =
+      "       0 letters\n" + "       0 letters\n" + "       0 total";
+    assert.deepEqual(actualOutput, expectedOutput);
+  });
+
+  it("should return word count for multiple files", function() {
+    const actualOutput = wc(["-w", "letters", "letters"], fs);
+    const expectedOutput =
+      "       3 letters\n" + "       3 letters\n" + "       6 total";
+    assert.deepEqual(actualOutput, expectedOutput);
+  });
+
+  it("should return character count for multiple files", function() {
+    const actualOutput = wc(["-c", "letters", "letters"], fs);
+    const expectedOutput =
+      "       6 letters\n" + "       6 letters\n" + "      12 total";
+    assert.deepEqual(actualOutput, expectedOutput);
+  });
 });
