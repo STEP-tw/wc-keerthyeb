@@ -1,5 +1,6 @@
-const { justifyLength, getCount } = require("./util.js");
+const { getCount } = require("./util.js");
 const { parse } = require("./parser.js");
+const { formatText } = require("./formatter.js");
 
 const wc = function(args, fs) {
   let { fileName, option } = parse(args);
@@ -21,10 +22,6 @@ const getFileDetails = function(fileName, fs) {
 
 const readFileContent = function(fs, fileName) {
   return fs.readFileSync(fileName, "UTF8");
-};
-
-const formatText = function(fileName, counts) {
-  return counts.map(count => justifyLength(count, 8)).join("") + " " + fileName;
 };
 
 module.exports = { wc };
