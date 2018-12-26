@@ -4,17 +4,15 @@ const { formatText } = require("./formatter.js");
 
 const wc = function(args, fs) {
   let { fileName, options } = parse(args);
-  let fileDetails = getFileDetails(fileName, fs);
-  let [lineCount, wordCount, charCount] = getCount(fileDetails.content);
-  return handleOutput(fileName, options, lineCount, wordCount, charCount);
+  let fileDetails = getFileDetails(fileName[0], fs);
+  let { lineCount, wordCount, charCount } = getCount(fileDetails.content);
+  return handleOutput(fileName, options, { lineCount, wordCount, charCount });
 };
 
 const handleOutput = function(
   fileName,
   userOptions,
-  lineCount,
-  wordCount,
-  charCount
+  { lineCount, wordCount, charCount }
 ) {
   if (userOptions.length == 0) {
     return formatText(fileName, [lineCount, wordCount, charCount]);

@@ -2,20 +2,20 @@ const HYPHEN = "-";
 
 const hasOption = arg => arg.startsWith(HYPHEN);
 
-const createParsedObject = (fileName, userOptions = []) => {
+const createParsedObject = (fileName, userOptions) => {
   let options = orderOption(userOptions);
   return { fileName, options };
 };
 
 const parse = args => {
-  let firstArg = args[0];
-  let secondArg = args[1];
+  let options = args.filter(option => hasOption(option));
+  options = options.map(option => option.slice(1));
+  let fileNames = args.slice(options.length);
 
-  if (hasOption(firstArg)) {
-    return createParsedObject(secondArg, firstArg.slice(1).split(""));
+  if (options.length == 1) {
+    options = options[0].split("");
   }
-
-  return createParsedObject(firstArg);
+  return createParsedObject(fileNames, options);
 };
 
 const orderOption = function(userOptions) {

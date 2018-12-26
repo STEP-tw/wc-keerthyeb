@@ -24,22 +24,34 @@ describe("wc", function() {
     const expectedOutput = "       0       3       6 letters";
     assert.deepEqual(actualOutput, expectedOutput);
   });
-});
 
-it("should return line count if option l is given ", function() {
-  const actualOutput = wc(["-l", "letters"], fs);
-  const expectedOutput = "       0 letters";
-  assert.deepEqual(actualOutput, expectedOutput);
-});
+  it("should return line count if option l is given ", function() {
+    const actualOutput = wc(["-l", "letters"], fs);
+    const expectedOutput = "       0 letters";
+    assert.deepEqual(actualOutput, expectedOutput);
+  });
 
-it("should return line count if option w is given ", function() {
-  const actualOutput = wc(["-w", "letters"], fs);
-  const expectedOutput = "       3 letters";
-  assert.deepEqual(actualOutput, expectedOutput);
-});
+  it("should return word count if option w is given ", function() {
+    const actualOutput = wc(["-w", "letters"], fs);
+    const expectedOutput = "       3 letters";
+    assert.deepEqual(actualOutput, expectedOutput);
+  });
 
-it("should return line count if option c is given ", function() {
-  const actualOutput = wc(["-c", "letters"], fs);
-  const expectedOutput = "       6 letters";
-  assert.deepEqual(actualOutput, expectedOutput);
+  it("should return word count if option c is given ", function() {
+    const actualOutput = wc(["-c", "letters"], fs);
+    const expectedOutput = "       6 letters";
+    assert.deepEqual(actualOutput, expectedOutput);
+  });
+
+  it("should return counts if options are together ", function() {
+    const actualOutput = wc(["-wlc", "letters"], fs);
+    const expectedOutput = "       0       3       6 letters";
+    assert.deepEqual(actualOutput, expectedOutput);
+  });
+
+  it("should return counts if options are given seperately ", function() {
+    const actualOutput = wc(["-w", "-l", "-c", "letters"], fs);
+    const expectedOutput = "       0       3       6 letters";
+    assert.deepEqual(actualOutput, expectedOutput);
+  });
 });
