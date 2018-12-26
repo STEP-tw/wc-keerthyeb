@@ -2,12 +2,12 @@ const HYPHEN = "-";
 
 const hasOption = arg => arg.startsWith(HYPHEN);
 
-const createParsedObject = (fileNames, userOptions) => {
+const createParsedObject = function(fileNames, userOptions) {
   let options = orderOption(userOptions);
   return { fileNames, options };
 };
 
-const parse = args => {
+const parse = function(args) {
   let options = args.filter(option => hasOption(option));
   options = options.map(option => option.slice(1));
   let fileNames = args.slice(options.length);
