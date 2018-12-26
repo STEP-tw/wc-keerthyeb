@@ -27,10 +27,12 @@ const countWord = function(fileContent) {
   return fileContent
     .replace(/\n/g, SPACE)
     .split(SPACE)
-    .filter(word => word !== EMPTY).length;
+    .filter(isEmpty).length;
 };
 
 const isSingleFile = file => file.length == 1;
+
+const isEmpty = element => element !== EMPTY;
 
 module.exports = {
   getCount,
