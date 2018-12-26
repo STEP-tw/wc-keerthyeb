@@ -1,10 +1,13 @@
 const { justifyLength, count, countWord } = require("./util.js");
 
+const NEW_LINE = "\n";
+const EMPTY = "";
+
 const wc = function(args, fs) {
   let fileDetails = getFileDetails(args[0], fs);
   let getCount = count.bind(null, fileDetails.content);
-  let lineCount = getCount("\n") - 1;
-  let charCount = getCount("");
+  let lineCount = getCount(NEW_LINE) - 1;
+  let charCount = getCount(EMPTY);
   let wordCount = countWord(fileDetails.content);
   return formatText(fileDetails.fileName, lineCount, wordCount, charCount);
 };

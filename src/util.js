@@ -1,11 +1,15 @@
+const SPACE = " ";
+const NEW_LINE = "\n";
+const EMPTY = "";
+
 const justifyLength = function(text, width) {
   let spaceWidth = width - text.toString().length;
-  return repeatSymbol(spaceWidth, " ") + text;
+  return repeatSymbol(spaceWidth, SPACE) + text;
 };
 
 const repeatSymbol = function(times, symbol) {
   times = Math.max(0, times);
-  return new Array(times).fill(symbol).join("");
+  return new Array(times).fill(symbol).join(EMPTY);
 };
 
 const count = function(fileContent, delimiter) {
@@ -14,9 +18,9 @@ const count = function(fileContent, delimiter) {
 
 const countWord = function(fileContent) {
   return fileContent
-    .replace(/\n/g, " ")
-    .split(" ")
-    .filter(word => word !== "").length;
+    .replace(/\n/g, SPACE)
+    .split(SPACE)
+    .filter(word => word !== EMPTY).length;
 };
 
 module.exports = { count, countWord, justifyLength };
