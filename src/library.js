@@ -6,6 +6,16 @@ const wc = function(args, fs) {
   let { fileName, option } = parse(args);
   let fileDetails = getFileDetails(fileName, fs);
   let [lineCount, wordCount, charCount] = getCount(fileDetails.content);
+  return handleOutput(fileName, option, lineCount, wordCount, charCount);
+};
+
+const handleOutput = function(
+  fileName,
+  option,
+  lineCount,
+  wordCount,
+  charCount
+) {
   if (option == undefined) {
     return formatText(fileName, [lineCount, wordCount, charCount]);
   }
