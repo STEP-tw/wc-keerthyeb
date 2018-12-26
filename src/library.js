@@ -3,24 +3,25 @@ const { parse } = require("./parser.js");
 const { formatText } = require("./formatter.js");
 
 const wc = function(args, fs) {
-  let { fileName, option } = parse(args);
+  let { fileName, options } = parse(args);
   let fileDetails = getFileDetails(fileName, fs);
   let [lineCount, wordCount, charCount] = getCount(fileDetails.content);
-  return handleOutput(fileName, option, lineCount, wordCount, charCount);
+  return handleOutput(fileName, options, lineCount, wordCount, charCount);
 };
 
 const handleOutput = function(
   fileName,
-  option,
+  userOptions,
   lineCount,
   wordCount,
   charCount
 ) {
-  if (option == undefined) {
+  if (userOptions.length == 0) {
     return formatText(fileName, [lineCount, wordCount, charCount]);
   }
   const options = { l: lineCount, c: charCount, w: wordCount };
-  return formatText(fileName, [options[option]]);
+  let counts = userOptions.map(option => options[option]);
+  return formatText(fileName, counts);
 };
 
 const getFileDetails = function(fileName, fs) {
