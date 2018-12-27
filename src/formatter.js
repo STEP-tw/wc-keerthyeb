@@ -11,11 +11,15 @@ const formatText = function(fileNames, counts) {
   if (isSingleFile(fileNames)) {
     return content.join("");
   }
-  let total_count = counts.reduce((currentCount, nextCount) =>
-    currentCount.map((count, index) => count + nextCount[index])
-  );
+  let total_count = calculateTotal(counts);
   content.push(formatCount(total_count) + " total");
   return content.join("\n");
+};
+
+const calculateTotal = function(counts) {
+  return counts.reduce((currentCount, nextCount) =>
+    currentCount.map((count, index) => count + nextCount[index])
+  );
 };
 
 module.exports = { formatText };
