@@ -15,6 +15,9 @@ const parse = function(args) {
   if (options.length == 1) {
     options = options[0].split("");
   }
+  if (options.length == 0) {
+    options = ["l", "w", "c"];
+  }
   return createParsedObject(fileNames, options);
 };
 

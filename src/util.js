@@ -15,6 +15,15 @@ const repeatSymbol = function(times, symbol) {
   return new Array(times).fill(symbol).join(EMPTY_STRING);
 };
 
+const add2List = function(list1, list2) {
+  let length = Math.max(list1.length, list2.length);
+  let addedList = [];
+  for (let index = 0; index < length; index++) {
+    addedList[index] = list1[index] + list2[index];
+  }
+  return addedList;
+};
+
 const getCount = function(fileContent) {
   const lineCount = countLine(fileContent);
   const wordCount = countWord(fileContent);
@@ -24,7 +33,7 @@ const getCount = function(fileContent) {
 
 const countLine = fileContent => fileContent.split(NEW_LINE).length - 1;
 
-const countChar = fileContent => fileContent.split(EMPTY_STRING).length;
+const countChar = fileContent => fileContent.length;
 
 const countWord = function(fileContent) {
   return fileContent
@@ -41,6 +50,7 @@ module.exports = {
   getCount,
   rightJustifier,
   isSingleFile,
+  add2List,
   SPACE,
   NEW_LINE,
   EMPTY_STRING
