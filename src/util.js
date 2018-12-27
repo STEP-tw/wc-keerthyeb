@@ -1,11 +1,14 @@
 const SPACE = " ";
 const EMPTY = "";
 const NEW_LINE = "\n";
+const WIDTH = 8;
 
-const justifyCount = function(text, width) {
+const justifyCount = function(width, text) {
   let spaceWidth = width - text.toString().length;
   return repeatSymbol(spaceWidth, SPACE) + text;
 };
+
+const rightJustifier = justifyCount.bind(null, WIDTH);
 
 const repeatSymbol = function(times, symbol) {
   times = Math.max(0, times);
@@ -36,6 +39,6 @@ const isEmpty = element => element !== EMPTY;
 
 module.exports = {
   getCount,
-  justifyCount,
+  rightJustifier,
   isSingleFile
 };
