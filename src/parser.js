@@ -9,12 +9,9 @@ const createParsedObject = function(fileNames, userOptions) {
 
 const parse = function(args) {
   let options = args.filter(option => hasOption(option));
-  options = options.map(option => option.slice(1));
   let fileNames = args.slice(options.length);
-
-  if (options.length == 1) {
-    options = options[0].split("");
-  }
+  options = [options.join("")];
+  options = options[0].split("");
   if (options.length == 0) {
     options = ["l", "w", "c"];
   }
