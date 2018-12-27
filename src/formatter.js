@@ -1,19 +1,25 @@
-const { rightJustifier, isSingleFile } = require("./util.js");
+const {
+  rightJustifier,
+  isSingleFile,
+  SPACE,
+  NEW_LINE,
+  EMPTY_STRING
+} = require("./util.js");
 
 const formatCount = function(counts) {
-  return counts.map(count => rightJustifier(count)).join("");
+  return counts.map(count => rightJustifier(count)).join(EMPTY_STRING);
 };
 
 const formatText = function(fileNames, counts) {
   let content = fileNames.map(
-    (fileName, index) => formatCount(counts[index]) + " " + fileName
+    (fileName, index) => formatCount(counts[index]) + SPACE + fileName
   );
   if (isSingleFile(fileNames)) {
-    return content.join("");
+    return content.join(EMPTY_STRING);
   }
   let total_count = calculateTotal(counts);
-  content.push(formatCount(total_count) + " total");
-  return content.join("\n");
+  content.push(formatCount(total_count) + SPACE + "total");
+  return content.join(NEW_LINE);
 };
 
 const calculateTotal = function(counts) {

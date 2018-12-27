@@ -1,5 +1,5 @@
 const SPACE = " ";
-const EMPTY = "";
+const EMPTY_STRING = "";
 const NEW_LINE = "\n";
 const WIDTH = 8;
 
@@ -12,7 +12,7 @@ const rightJustifier = justifyCount.bind(null, WIDTH);
 
 const repeatSymbol = function(times, symbol) {
   times = Math.max(0, times);
-  return new Array(times).fill(symbol).join(EMPTY);
+  return new Array(times).fill(symbol).join(EMPTY_STRING);
 };
 
 const getCount = function(fileContent) {
@@ -24,7 +24,7 @@ const getCount = function(fileContent) {
 
 const countLine = fileContent => fileContent.split(NEW_LINE).length - 1;
 
-const countChar = fileContent => fileContent.split(EMPTY).length;
+const countChar = fileContent => fileContent.split(EMPTY_STRING).length;
 
 const countWord = function(fileContent) {
   return fileContent
@@ -35,10 +35,13 @@ const countWord = function(fileContent) {
 
 const isSingleFile = file => file.length == 1;
 
-const isEmpty = element => element !== EMPTY;
+const isEmpty = element => element !== EMPTY_STRING;
 
 module.exports = {
   getCount,
   rightJustifier,
-  isSingleFile
+  isSingleFile,
+  SPACE,
+  NEW_LINE,
+  EMPTY_STRING
 };
