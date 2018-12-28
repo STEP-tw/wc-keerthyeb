@@ -28,3 +28,5 @@ README.md|README.md
 -w|-c|-l|README.md|README.md
 -c|-w|-l|README.md|README.md
 -c|-l|-w|README.md|README.md
+-ccl|README.md
+-ll|-w|README.md

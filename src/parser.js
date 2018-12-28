@@ -8,7 +8,10 @@ const createParsedObject = function(fileNames, userOptions) {
 };
 
 const parse = function(args) {
-  let options = args.filter(option => isOption(option));
+  let options = [];
+  if (isOption(args[0])) {
+    options = getOptions(args);
+  }
   let fileNames = args.slice(options.length);
   options = [options.join("")];
   options = options[0].split("");
@@ -24,6 +27,16 @@ const filterOption = function(userOptions) {
     userOptions.includes(option)
   );
   return options.map(option => validOptions[option]);
+};
+
+const getOptions = function(args) {
+  let index = 0;
+  let options = [];
+  while (isOption(args[index])) {
+    options.push(args[index]);
+    index++;
+  }
+  return options;
 };
 
 module.exports = { parse };
