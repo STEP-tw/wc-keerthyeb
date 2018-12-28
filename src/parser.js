@@ -1,6 +1,6 @@
 const HYPHEN = "-";
 
-const hasOption = arg => arg.startsWith(HYPHEN);
+const isOption = arg => arg.startsWith(HYPHEN);
 
 const createParsedObject = function(fileNames, userOptions) {
   let options = filterOption(userOptions);
@@ -8,7 +8,7 @@ const createParsedObject = function(fileNames, userOptions) {
 };
 
 const parse = function(args) {
-  let options = args.filter(option => hasOption(option));
+  let options = args.filter(option => isOption(option));
   let fileNames = args.slice(options.length);
   options = [options.join("")];
   options = options[0].split("");

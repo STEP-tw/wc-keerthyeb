@@ -24,11 +24,9 @@ const add2List = function(list1, list2) {
   return addedList;
 };
 
-const getCount = function(fileContent) {
-  const lineCount = countLine(fileContent);
-  const wordCount = countWord(fileContent);
-  const charCount = countChar(fileContent);
-  return [lineCount, wordCount, charCount];
+const getCount = function(fileContent, options) {
+  let counts = { line: countLine, word: countWord, character: countChar };
+  return options.map(option => counts[option](fileContent));
 };
 
 const countLine = fileContent => fileContent.split(NEW_LINE).length - 1;
