@@ -13,7 +13,7 @@ const wc = function(args, fs) {
 const getFileDetails = function(fileName, options, fs) {
   let content = readFileContent(fs, fileName);
   let counts = getCount(content);
-  const optionIndex = { l: 0, w: 1, c: 2 };
+  const optionIndex = { line: 0, word: 1, character: 2 };
   counts = options.map(option => counts[optionIndex[option]]);
   return { fileName, counts };
 };

@@ -17,10 +17,13 @@ const parse = function(args) {
 
 const filterOption = function(userOptions) {
   if (userOptions.length == 0) {
-    userOptions = ["l", "w", "c"];
+    return ["line", "word", "character"];
   }
-  const options = ["l", "w", "c"];
-  return options.filter(option => userOptions.includes(option));
+  const validOptions = { l: "line", w: "word", c: "character" };
+  let options = Object.keys(validOptions).filter(option =>
+    userOptions.includes(option)
+  );
+  return options.map(option => validOptions[option]);
 };
 
 module.exports = { parse };
